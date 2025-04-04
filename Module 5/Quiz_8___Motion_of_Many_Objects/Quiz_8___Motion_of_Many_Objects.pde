@@ -17,7 +17,7 @@ void setup()
   background(255);
   frameRate(120);
  
-  for(int i = 0; i <= walkers.length - 1; i++)
+  for(int i = 0; i <= walkers.length - 1; i++) //Initializes all data in object array
   {
     walkers[i] = new Walker();
     walkers[i].mass = i + 1;
@@ -36,28 +36,40 @@ void draw()
 {
   background(80);
   noStroke();
-
+ 
+ //Activity before refreshing
  for(int i = 0; i <= walkers.length - 1; i++)
  {
-    walkers[i].render();
+   
     walkers[i].update();
+    walkers[i].render();
     walkers[i].applyForce(wind);
     walkers[i].applyForce(gravity);
     
     //Newtons 3rd Law of Motion
-    if ((walkers[i].position.x > Window.right) || (walkers[i].position.x < Window.left))
+    if (walkers[i].position.x > Window.right)  
     {
+      walkers[i].position.x = Window.right; 
       walkers[i].velocity.x *= -1; 
     }
     
-    if ((walkers[i].position.y > Window.top) || (walkers[i].position.y < Window.bottom))
+    if(walkers[i].position.x < Window.left)
     {
+      walkers[i].position.x = Window.left; 
+      walkers[i].velocity.x *= -1; 
+    }
+    
+    if (walkers[i].position.y > Window.top) 
+    {
+      walkers[i].position.x = Window.top; 
+      walkers[i].velocity.x *= -1; 
+    }
+    
+    if(walkers[i].position.y < Window.bottom)
+    {
+      walkers[i].position.x = Window.bottom; 
       walkers[i].velocity.y *= -1;
     }
  }
-
-
-  
-  
-  
+ 
 }
