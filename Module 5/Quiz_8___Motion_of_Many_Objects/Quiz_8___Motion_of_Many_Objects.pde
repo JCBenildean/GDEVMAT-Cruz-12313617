@@ -61,13 +61,13 @@ void draw()
     
     if (walkers[i].position.y > Window.top) 
     {
-      walkers[i].position.x = Window.top; 
-      walkers[i].velocity.x *= -1; 
+      walkers[i].position.y = Window.top; 
+      walkers[i].velocity.y *= -1; 
     }
     
     if(walkers[i].position.y < Window.bottom)
     {
-      walkers[i].position.x = Window.bottom; 
+      walkers[i].position.y = Window.bottom; 
       walkers[i].velocity.y *= -1;
     }
  }
